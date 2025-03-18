@@ -4,7 +4,7 @@ import numpy as np
 import plotly.express as px
 import joblib
 from sklearn.ensemble import RandomForestRegressor
-from fbprophet import Prophet
+from prophet import Prophet
 
 # Load Dataset
 def load_data():
