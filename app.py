@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 # Load Dataset
 def load_data():
-    df = pd.read_csv('retail_data.csv', sep=';')  # Update with actual dataset path
+    df = pd.read_csv('your_dataset.csv', sep=';')  # Update with actual dataset path
     df['Date'] = pd.to_datetime(df['Date'])
     return df
 
@@ -15,6 +15,31 @@ df = load_data()
 # Streamlit App
 st.set_page_config(page_title='Sales Forecasting', page_icon='📈', layout='wide')
 st.title("📈 Sales Price Prediction & Demand Forecasting")
+
+# Dataset Overview
+st.subheader("Dataset Overview")
+st.write("This dataset contains historical sales and demand data, including various factors influencing demand such as promotions, holidays, and fuel prices. The dataset consists of the following columns:")
+st.markdown("""
+- **Product_id**: Unique identifier for the product.
+- **Product_Code**: Code assigned to the product.
+- **Warehouse**: The storage location of the product.
+- **Product_Category**: The category to which the product belongs.
+- **Date**: The date of the sales record.
+- **Order_Demand**: The total demand for the product on that date.
+- **Open**: Whether the store was open on that date (1 = Yes, 0 = No).
+- **Promo**: Indicates if there was a promotional offer (1 = Yes, 0 = No).
+- **StateHoliday**: Whether the date was a state holiday (1 = Yes, 0 = No).
+- **SchoolHoliday**: Whether the date was a school holiday (1 = Yes, 0 = No).
+- **Petrol_price**: The price of petrol on that date, which can influence demand.
+""")
+
+# Sample Data
+st.subheader("Sample Data")
+st.write("Here is an example row from the dataset:")
+sample_data = {"Product_id": [786725], "Product_Code": ["Product_0033"], "Warehouse": ["Whse_S"], 
+               "Product_Category": ["Category_005"], "Date": ["01/03/2016"], "Order_Demand": [16000],
+               "Open": [1], "Promo": [0], "StateHoliday": [0], "SchoolHoliday": [0], "Petrol_price": [91]}
+st.dataframe(pd.DataFrame(sample_data))
 
 # Select Warehouse and Product Category
 warehouses = df['Warehouse'].unique()
