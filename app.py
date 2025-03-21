@@ -21,7 +21,7 @@ df = load_data()
 
 # Streamlit App
 st.set_page_config(page_title='Sales Forecasting', page_icon='📈', layout='wide')
-st.title("📈 Sales Price Prediction & Demand Forecasting")
+st.title("📈 Sales Price Prediction & Demand Forecasting App")
 
 # Dataset Overview
 st.subheader("Dataset Overview")
