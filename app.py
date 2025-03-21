@@ -6,8 +6,15 @@ from sklearn.ensemble import RandomForestRegressor
 
 # Load Dataset
 def load_data():
-    df = pd.read_csv('your_dataset.csv', sep=';')  # Update with actual dataset path
+    df = pd.read_csv('retail_data.csv', sep=';')  # Update with actual dataset path
     df['Date'] = pd.to_datetime(df['Date'])
+    
+    # Convert 'StateHoliday' to numeric, replacing non-numeric values with 0
+    df['StateHoliday'] = pd.to_numeric(df['StateHoliday'], errors='coerce').fillna(0).astype(int)
+    
+    # Ensure 'Petrol_price' is converted to float
+    df['Petrol_price'] = pd.to_numeric(df['Petrol_price'], errors='coerce').fillna(df['Petrol_price'].median())
+    
     return df
 
 df = load_data()
