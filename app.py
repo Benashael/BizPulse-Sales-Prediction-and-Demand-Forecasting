@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 # Load Dataset
 def load_data():
-    df = pd.read_csv('your_dataset.csv', sep=';')  # Update with actual dataset path
+    df = pd.read_csv('retail_data.csv', sep=';')  # Update with actual dataset path
     df['Date'] = pd.to_datetime(df['Date'])
     return df
 
